@@ -8,7 +8,20 @@
 </head>
 <body>
     <script>
-        
+        fetch('https://github.com/tosecfromback/dataVisualization/blob/fc93392ab5bc520695770d08b011bc5ee7ba8221/data.json')
+        .then(data => data.json())
+        .then(data => {
+            const body = document.querySelector('body')
+            const orderPopulation = document.createElement('ol')
+            for (const i of data) {
+                const local = document.createElement('li')
+                local.innerText = i.지역이름 + i.인구
+                orderPopulation.append(local)
+            }
+        })
+        .catch(error => {
+            alert('데이터가 존재하지 않습니다.')
+        })
     </script>
 </body>
 </html>
